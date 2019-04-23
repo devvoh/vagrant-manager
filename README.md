@@ -25,7 +25,7 @@ vm reload-all
 And for all `-all` commands, you can add a filter option:
 
 ```bash
-vm reload-all --filter=mol
+vm reload-all --filter=part
 ```
 
 #### Default values
@@ -35,12 +35,12 @@ vm reload-all --filter=mol
 If you set these to:
 
 ```bash
-VM_DEFAULT_BOX=mollie VM_DEFAULT_COMMAND=ssh
+VM_DEFAULT_BOX=box VM_DEFAULT_COMMAND=ssh
 ```
 
-Then running `vm` without arguments will `ssh` into `mollie`.
+Then running `vm` without arguments will `ssh` into `box`.
 
-If you run `vm halt`, it'll do so on `mollie`.
+If you run `vm halt`, it'll do so on `box`.
 
 #### To-do
-1. Make the default flow recognize whether it's a machine or command. This would mean that `vm mollie` would `ssh` into it, and `vm halt` would `halt` mollie.
+1. Make the default flow recognize whether it's a machine or command. This would mean that `vm box` would `ssh` into it, and `vm halt` would `halt` box.
