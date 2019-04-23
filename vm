@@ -1,0 +1,40 @@
+#!/usr/bin/env php
+<?php
+
+use Parable\Console\Output;
+use Parable\Console\Parameter;
+use Parable\Di\Container;
+use VagrantManager\Manager;
+
+require_once realpath(__DIR__ . "/vendor/autoload.php");
+
+define('HOMEDIR', getcwd());
+
+define('DEFAULT_COMMAND', getenv('VM_DEFAULT_COMMAND'));
+define('DEFAULT_BOX', getenv('VM_DEFAULT_BOX'));
+
+$di = new Container();
+
+$parameter = $di->get(Parameter::class);
+
+$parameter->setCommandArguments([
+    new Parameter\Argument('box'),
+]);
+$parameter->setCommandOptions([
+    new Parameter\Option('filter')
+]);
+
+$manager = $di->get(Manager::class);
+
+try {
+    $manager->run();
+} catch(\Throwable $throwable) {
+    $di->get(Output::class)->writeln(
+        sprintf(
+            "%s:%d\n<red>Error: %s</red>",
+            $throwable->getFile(),
+            $throwable->getLine(),
+            $throwable->getMessage()
+        )
+    );
+}
