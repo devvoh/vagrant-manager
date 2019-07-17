@@ -5,8 +5,10 @@
 To use it globally:
 
 ```bash
-sudo ln -s /full/path/to/vagrant-mangler/vm /usr/local/bin/vm
+sudo ln -s /full/path/to/vagrant-manager/vm /usr/local/bin/vm
 ```
+
+You'll also need to run `composer install` in the directory where vagrant-manager is placed.
 
 You can now run it from anywhere, and pulling the latest code from git is painless.
 
